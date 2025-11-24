@@ -1,0 +1,45 @@
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/condabin/conda
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/conda
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/conda-env
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/activate
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/deactivate
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.sh
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/fish/conf.d/conda.fish
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/shell/condabin/Conda.psm1
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/shell/condabin/conda-hook.ps1
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/lib/python3.13/site-packages/xontrib/conda.xsh
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.csh
+no change     /home/hu/hu_hu/hu_abdeom01/.bashrc
+No action taken.
+Auto log_format: <Label> <Id> <Date> <Code1> <Time> <Code2> <Component1> <Component2> <Level> <Content>
+Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/raw/bgl/BGL.log
+Total size is 4713493; Total size after encoding is 4747963
+Structuring done. [Time taken: 0:00:38.174974]
+window_size: 100; step_size: 100
+4713493
+Start grouping.
+Train dataset info:
+max session length: 100; mean session length: 99.99984088257133
+
+number of anomalous sessions: 4009; number of normal sessions: 33699; number of total sessions: 37708
+
+Test dataset info:
+max session length: 100; mean session length: 99.99989392171423
+
+number of anomalous sessions: 817; number of normal sessions: 8610; number of total sessions: 9427
+
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc3n084
+Job ID: 2251269
+Cluster: uc3
+User/Group: hu_abdeom01/hu_hu
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:52
+CPU Efficiency: 4.78% of 00:18:08 core-walltime
+Job Wall-clock time: 00:01:08
+Memory Utilized: 4.29 GB
+Memory Efficiency: 0.42% of 1.00 TB (1.00 TB/node)

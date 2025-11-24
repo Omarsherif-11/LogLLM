@@ -1,8 +1,10 @@
 *
 
 !.gitignore
-!prepareData/
+!prepareData
+!prepareData/**
 !scripts/ 
+!scripts/**
 !customDataset.py
 !eval.py
 !model.py
