@@ -1,0 +1,64 @@
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/condabin/conda
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/conda
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/conda-env
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/activate
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/bin/deactivate
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.sh
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/fish/conf.d/conda.fish
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/shell/condabin/Conda.psm1
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/shell/condabin/conda-hook.ps1
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/lib/python3.13/site-packages/xontrib/conda.xsh
+no change     /home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.csh
+no change     /home/hu/hu_hu/hu_abdeom01/.bashrc
+No action taken.
+
+=== Processing dataset: bgl ===
+data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl, log_name=BGL.log
+Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl/BGL.log
+Total size is 4713493; Total size after encoding is 4747963
+Structuring done. [Time taken: 0:00:37.896023]
+Structured labeled: total=4713493, anomalies=348460, rate=0.073928
+Train=3770794, Test=942699
+Windowing: window=100, step=100
+
+=== Processing dataset: mac ===
+data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/mac, log_name=Mac.log
+Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/mac/Mac.log
+Total size is 102768; Total size after encoding is 117283
+Structuring done. [Time taken: 0:19:44.323840]
+Structured labeled: total=102768, anomalies=14890, rate=0.144889
+Train=82214, Test=20554
+Windowing: window=10, step=10
+
+=== Processing dataset: android ===
+data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/android, log_name=Android.log
+Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/android/Android.log
+Total size is 1487126; Total size after encoding is 1555005
+Structuring done. [Time taken: 0:00:35.461614]
+Structured labeled: total=1487126, anomalies=91061, rate=0.061233
+Train=1189700, Test=297426
+Windowing: window=20, step=20
+
+=== Processing dataset: windows ===
+data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/windows, log_name=Windows.log
+Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/windows/Windows.log
+Total size is 114544185; Total size after encoding is 114608781
+Structuring done. [Time taken: 0:15:47.685617]
+Structured labeled: total=114544185, anomalies=488576, rate=0.004265
+Train=91635348, Test=22908837
+Windowing: window=100, step=100
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc3n084
+Job ID: 2298159
+Cluster: uc3
+User/Group: hu_abdeom01/hu_hu
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 01:15:12
+CPU Efficiency: 6.17% of 20:18:24 core-walltime
+Job Wall-clock time: 01:16:09
+Memory Utilized: 79.44 GB
+Memory Efficiency: 7.76% of 1.00 TB (1.00 TB/node)

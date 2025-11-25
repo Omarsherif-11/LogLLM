@@ -1,4 +1,8 @@
 datasets = {
+        "bgl": {
+            "data_dir": "/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl",
+            "log_name": "BGL.log",
+        },
         "android": {
             "data_dir": "/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/android",
             "log_name": "Android.log",
@@ -7,7 +11,7 @@ datasets = {
                 "without error", "success", "completed", " verified ",
                 "return code 0", "status: 0", "result: 0",
                 "test", "simulation", "debug", "test", "trace",
-                "low memory" # Common warning, usually handled by OS
+                "low memory", "warning" # Common warning, usually handled by OS
             ],
 
             "critical_keywords": [
@@ -41,7 +45,7 @@ datasets = {
                 "without error", "success", "completed", "verified",
                 "return code 0", "status: 0", "result: 0",
                 "test", "simulation", "notice", "test", "debug", "trace",
-                "low memory"
+                "low memory", "warning"
             ],
 
             "critical_keywords": [
@@ -79,8 +83,8 @@ datasets = {
                 "0 errors", "no error", "0 fail", "no fail", "succeeded", "successfully", 
                 "completed", "verified", "return code 0", "status: 0", "result: 0",
                 "informational", "audit success", "0x0", "service starts", "ready", "clean up",
-                "operation successful", "run successfully", "hresult 0x00000000", "hresult 0x00000001",
-                "test", "debug", "trace"
+                "operation successful", "run successfully",
+                "test", "debug", "trace", "warning"
             ],
 
             "critical_keywords": [
@@ -89,7 +93,6 @@ datasets = {
                 "fail",                # "Failed to...", "Failure"
                 "failed",
                 "failure",
-                "warning",             # "Warning: Failed to upload..."
                 "exception",
                 "denied",              # "Access denied"
                 "invalid",             # "Invalid argument"

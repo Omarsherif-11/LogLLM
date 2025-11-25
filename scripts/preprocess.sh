@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=prepare_data
-#SBATCH --output=prepare_data.out
-#SBATCH --error=prepare_data.err
+#SBATCH --job-name=preprocess
+#SBATCH --output=preprocess.out
+#SBATCH --error=preprocess.err
 #SBATCH --partition=highmem
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -13,4 +13,4 @@ conda init
 conda activate logllm
 cd /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/prepareData
 
-python sliding_window.py
+python sliding_window.py --datasets bgl mac android windows 

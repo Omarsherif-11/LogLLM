@@ -13,13 +13,13 @@ max_content_len = 100
 max_seq_len = 128
 batch_size = 32
 dataset_name = 'BGL'   # 'Thunderbird' 'HDFS_v1'  'BGL'  'Liberty‘
-data_path = r'/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl/test.csv'.format(dataset_name)
+data_path = r'/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl/prepared/test.csv'.format(dataset_name)
 
 Bert_path = r"/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/bert-base-uncased"
 Llama_path = r"/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/Meta-Llama-3-8B"
 
 ROOT_DIR = Path(__file__).parent
-ft_path = os.path.join(ROOT_DIR, r"ft_model_{}".format(dataset_name))
+ft_path = os.path.join(ROOT_DIR, r"ft_model_{}".format(dataset_name)) 
 
 device = torch.device("cuda:0")
 
