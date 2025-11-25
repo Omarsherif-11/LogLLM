@@ -16,7 +16,7 @@ No action taken.
 data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl, log_name=BGL.log
 Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl/BGL.log
 Total size is 4713493; Total size after encoding is 4747963
-Structuring done. [Time taken: 0:00:37.896023]
+Structuring done. [Time taken: 0:00:38.377917]
 Structured labeled: total=4713493, anomalies=348460, rate=0.073928
 Train=3770794, Test=942699
 Windowing: window=100, step=100
@@ -25,7 +25,7 @@ Windowing: window=100, step=100
 data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/mac, log_name=Mac.log
 Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/mac/Mac.log
 Total size is 102768; Total size after encoding is 117283
-Structuring done. [Time taken: 0:19:44.323840]
+Structuring done. [Time taken: 0:19:04.476231]
 Structured labeled: total=102768, anomalies=14890, rate=0.144889
 Train=82214, Test=20554
 Windowing: window=10, step=10
@@ -34,7 +34,7 @@ Windowing: window=10, step=10
 data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/android, log_name=Android.log
 Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/android/Android.log
 Total size is 1487126; Total size after encoding is 1555005
-Structuring done. [Time taken: 0:00:35.461614]
+Structuring done. [Time taken: 0:00:35.162754]
 Structured labeled: total=1487126, anomalies=91061, rate=0.061233
 Train=1189700, Test=297426
 Windowing: window=20, step=20
@@ -42,23 +42,23 @@ Windowing: window=20, step=20
 === Processing dataset: windows ===
 data_dir=/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/windows, log_name=Windows.log
 Structuring file: /pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/windows/Windows.log
-Total size is 114544185; Total size after encoding is 114608781
-Structuring done. [Time taken: 0:15:47.685617]
-Structured labeled: total=114544185, anomalies=488576, rate=0.004265
-Train=91635348, Test=22908837
+Total size is 9997366; Total size after encoding is 10000007
+Structuring done. [Time taken: 0:01:17.710710]
+Structured labeled: total=9997366, anomalies=37890, rate=0.003790
+Train=7997892, Test=1999474
 Windowing: window=100, step=100
 
 ============================= JOB FEEDBACK =============================
 
-NodeName=uc3n084
-Job ID: 2298159
+NodeName=uc3n068
+Job ID: 2309011
 Cluster: uc3
 User/Group: hu_abdeom01/hu_hu
 State: COMPLETED (exit code 0)
 Nodes: 1
-Cores per node: 16
-CPU Utilized: 01:15:12
-CPU Efficiency: 6.17% of 20:18:24 core-walltime
-Job Wall-clock time: 01:16:09
-Memory Utilized: 79.44 GB
-Memory Efficiency: 7.76% of 1.00 TB (1.00 TB/node)
+Cores per node: 128
+CPU Utilized: 00:25:17
+CPU Efficiency: 0.77% of 2-06:47:28 core-walltime
+Job Wall-clock time: 00:25:41
+Memory Utilized: 6.69 GB
+Memory Efficiency: 2.23% of 300.00 GB (300.00 GB/node)

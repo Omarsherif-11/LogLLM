@@ -2,11 +2,10 @@
 #SBATCH --job-name=preprocess
 #SBATCH --output=preprocess.out
 #SBATCH --error=preprocess.err
-#SBATCH --partition=highmem
+#SBATCH --partition=cpu
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=1024G
+#SBATCH --ntasks=64
+#SBATCH --mem=300G
 #SBATCH --time=3-00:00:00
 
 conda init
