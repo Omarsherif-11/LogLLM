@@ -196,9 +196,6 @@ class LogLLM(nn.Module):
                 param.requires_grad = True
 
     def train_helper(self, inputs, seq_positions, labels):
-        # [Content remains exactly as in your provided file]
-        # I am omitting the body here for brevity as it was not requested to be changed, 
-        # but in your actual file, keep the exact logic you provided for train_helper.
         batch_size = len(labels)
         outputs = self.Bert_model(**inputs).pooler_output
         outputs = outputs.float()
@@ -221,7 +218,6 @@ class LogLLM(nn.Module):
             # Access internal model for embeddings
             base_model = self.Llama_model.model if hasattr(self.Llama_model, 'model') else self.Llama_model
             # Depending on peft version, might be model.model.embed_tokens or just model.embed_tokens
-            # Your code used self.Llama_model.model.model.embed_tokens
             instruc_embeddings = base_model.model.embed_tokens(self.instruc_tokens['input_ids'])
             answer_embeddings = base_model.model.embed_tokens(answer_tokens_ids)
         else:
@@ -250,7 +246,105 @@ class LogLLM(nn.Module):
 
         return Llama_output[label_mask], target_tokens_ids[target_tokens_atts]
 
-    # [Keep forward method exactly as provided in original]
     def forward(self, inputs, seq_positions):
-         # ... (Use your original code here)
-         pass
+        '''
+        :param inputs: the tokenized Sequences for BERT. Sequences are concatenated.
+        :param seq_positions:
+        :return: Generated answer (token id).
+        '''
+        batch_size = len(seq_positions) + 1
+
+        outputs = self.Bert_model(**inputs).pooler_output  # dim = 768
+        outputs = outputs.float()
+        outputs = self.projector(outputs)
+        outputs = outputs.half()
+
+        seq_embeddings = torch.tensor_split(outputs, seq_positions)
+
+        prefix = "The sequence is"
+        answer_prefix_tokens = self.Llama_tokenizer(prefix, padding=True, return_tensors="pt")['input_ids'][0,1:].to(
+            self.device)
+
+        if type(self.Llama_model) == peft.peft_model.PeftModelForCausalLM:
+            instruc_embeddings = self.Llama_model.model.model.embed_tokens(self.instruc_tokens['input_ids'])
+            answer_prefix_tokens_embeddings = self.Llama_model.model.model.embed_tokens(answer_prefix_tokens)
+        else:
+            instruc_embeddings = self.Llama_model.model.embed_tokens(self.instruc_tokens['input_ids'])
+            answer_prefix_tokens_embeddings = self.Llama_model.model.embed_tokens(answer_prefix_tokens)
+
+        ins1 = instruc_embeddings[0][self.instruc_tokens['attention_mask'][0].bool()]
+        ins2 = instruc_embeddings[1][self.instruc_tokens['attention_mask'][1].bool()][1:]
+
+
+
+        promot_embeddings = []
+        for seq_embedding in seq_embeddings:
+            prompt_embedding = torch.cat([ins1, seq_embedding, ins2, answer_prefix_tokens_embeddings])
+            promot_embeddings.append(prompt_embedding)
+
+        inputs_embeds, attention_mask = stack_and_pad_left(promot_embeddings)
+        attention_mask = attention_mask.to(self.device)
+
+        pad_token_id = self.Llama_tokenizer.pad_token_id
+        eos_token_id = self.Llama_tokenizer.eos_token_id
+        if isinstance(eos_token_id, int):
+            eos_token_id = [eos_token_id]
+        eos_token_id_tensor = torch.tensor(eos_token_id).to(self.device) if eos_token_id is not None else None
+
+        unfinished_sequences = torch.ones(batch_size, dtype=torch.long, device=self.device)
+
+        this_peer_finished = False
+        answer = []
+        past_key_values = DynamicCache()  # 新缓存对象
+
+
+        while not this_peer_finished:
+            if len(past_key_values) == 0:
+                # 初始轮：传完整 inputs_embeds
+                outputs = self.Llama_model(
+                    inputs_embeds=inputs_embeds,
+                    attention_mask=attention_mask,
+                    past_key_values=past_key_values,
+                    use_cache=True,
+                )
+            else:
+                # 后续轮：只传一个 token 的 embedding（即上一步预测的 token）
+                outputs = self.Llama_model(
+                    inputs_embeds=next_tokens_embeddings[:, None, :],
+                    attention_mask=attention_mask,
+                    past_key_values=past_key_values,
+                    use_cache=True,
+                )
+
+            logits = outputs.logits
+            next_token_logits = logits[:, -1, :]
+            next_tokens = torch.argmax(next_token_logits, dim=-1)
+
+            # 应对结束符逻辑
+            next_tokens = next_tokens * unfinished_sequences + pad_token_id * (1 - unfinished_sequences)
+            answer.append(next_tokens)
+
+            # obtain embedding of next token
+            if isinstance(self.Llama_model, peft.peft_model.PeftModelForCausalLM):
+                next_tokens_embeddings = self.Llama_model.model.model.embed_tokens(next_tokens)
+            else:
+                next_tokens_embeddings = self.Llama_model.model.embed_tokens(next_tokens)
+
+            # update attention_mask
+            attention_mask = torch.cat([attention_mask, unfinished_sequences[:, None]], dim=1)
+
+            if eos_token_id_tensor is not None:
+                unfinished_sequences = unfinished_sequences.mul(
+                    next_tokens.tile(eos_token_id_tensor.shape[0], 1)
+                    .ne(eos_token_id_tensor.unsqueeze(1))
+                    .prod(dim=0)
+                )
+
+                if unfinished_sequences.max() == 0:
+                    this_peer_finished = True
+
+            # stop if we exceed the maximum answer length
+            if  5 < len(answer):
+                this_peer_finished = True
+
+        return torch.stack(answer,dim=1)
