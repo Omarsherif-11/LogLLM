@@ -19,3 +19,6 @@
 !ft_model_android/**
 !ft_model_windows
 !ft_model_windows/**
+!ft_model_bad_windows
+!ft_model_bad_windows/**
+!cp_train_bad_windows.py

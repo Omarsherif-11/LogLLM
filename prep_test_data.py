@@ -45,7 +45,7 @@ def process_chunk(texts):
 
 def main():
     # --- CONFIGURATION ---
-    dataset_name = 'android'   # <--- Change this to 'mac' / 'bgl' etc as needed
+    dataset_name = 'bad_windows'   # <--- Change this to 'mac' / 'bgl' etc as needed
     split_name = 'test'        # <--- We are processing the TEST set
     
     # Paths
