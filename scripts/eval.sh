@@ -6,8 +6,8 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=700G
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=64G
 #SBATCH --time=00:30:00
 
 source /pfs/data6/home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.sh

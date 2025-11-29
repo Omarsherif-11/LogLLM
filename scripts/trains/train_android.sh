@@ -6,9 +6,9 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=64
-#SBATCH --mem=300G
-#SBATCH --time=72:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=64G
+#SBATCH --time=10:00:00
 
 source /pfs/data6/home/hu/hu_hu/hu_abdeom01/miniconda3/etc/profile.d/conda.sh
 conda activate logllm

@@ -11,9 +11,9 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 max_content_len = 100
 max_seq_len = 128
-batch_size = 32
-dataset_name = 'BGL'   # 'Thunderbird' 'HDFS_v1'  'BGL'  'Liberty‘
-data_path = r'/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/bgl/prepared/test.csv'.format(dataset_name)
+batch_size = 64
+dataset_name = 'android'   # 'Thunderbird' 'HDFS_v1'  'BGL'  'Liberty‘
+data_path = r'/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/datasets/{}/prepared/test.csv'.format(dataset_name)
 
 Bert_path = r"/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/bert-base-uncased"
 Llama_path = r"/pfs/data6/home/hu/hu_hu/hu_abdeom01/logllm_work/Meta-Llama-3-8B"
