@@ -200,7 +200,7 @@ class LogLLM(nn.Module):
         outputs = self.Bert_model(**inputs).pooler_output
         outputs = outputs.float()
         outputs = self.projector(outputs)
-        outputs = outputs.half()
+        outputs = outputs.to(self.Llama_model.dtype)
         seq_embeddings = torch.tensor_split(outputs, seq_positions)
         prefix = "The sequence is "
         max_len = max(len(s) for s in labels) + len(prefix)
